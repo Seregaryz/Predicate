@@ -12,7 +12,7 @@ class AuthHeaderInterceptor(
         var request = chain.request()
         val token = sessionKeeper.token
         request = if (token != null) {
-            request.newBuilder().addHeader("Authorization", "Bearer $token").build()
+            request.newBuilder().addHeader("Authorization", "Token $token").build()
         } else {
             request.newBuilder().build()
         }

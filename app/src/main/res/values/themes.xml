@@ -11,11 +11,16 @@
         <item name="colorPrimary">@color/primaryColor</item>
         <item name="colorPrimaryVariant">@color/primaryDarkColor</item>
         <item name="colorOnPrimary">@color/primaryLightColor</item>
+        <item name="colorBackgroundPrimary">@color/backgroundPrimary</item>
 
         <item name="android:statusBarColor" tools:targetApi="l">@color/primaryDarkColor</item>
         <!-- Customize your theme here. -->
     </style>
 
+    <style name="ProgressDialogTheme" parent="ThemeOverlay.AppCompat.Dialog">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="colorAccent">@color/backgroundPrimary</item>
+    </style>
 
     <style name="Button.Primary" parent="@style/Widget.AppCompat.Button">
         <item name="backgroundTint">@color/color_states_buttons</item>

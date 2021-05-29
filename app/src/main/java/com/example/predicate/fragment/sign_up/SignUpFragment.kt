@@ -9,15 +9,17 @@ import android.widget.Toast
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.viewModels
 import com.example.predicate.R
+import com.example.predicate.fragment.base.BaseFragment
 import com.example.predicate.fragment.sign_in.SignInFragment
 import com.example.predicate.system.subscribeToEvent
 import com.example.predicate.utils.navigateTo
+import com.example.predicate.utils.registerOnBackPressedCallback
 import com.example.predicate.utils.setSlideAnimation
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_sign_up.*
 
 @AndroidEntryPoint
-class SignUpFragment : Fragment() {
+class SignUpFragment : BaseFragment(R.layout.fragment_sign_up) {
 
     private val viewModel: SignUpViewModel by viewModels()
 
@@ -30,6 +32,9 @@ class SignUpFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        registerOnBackPressedCallback {
+            parentFragmentManager.popBackStack()
+        }
         etEmail.addTextChangedListener {
             viewModel.currentUserData.email = it.toString()
         }
@@ -62,12 +67,17 @@ class SignUpFragment : Fragment() {
     override fun onResume() {
         super.onResume()
         viewModel.apply {
-            loading.subscribe {  }
+            loading.subscribe {
+                showProgressDialog(it)
+            }
             errorMessage.subscribeToEvent {
                 Toast.makeText(requireContext(), it, Toast.LENGTH_SHORT).show()
             }
             successSignUp.subscribe {
-                Toast.makeText(requireContext(), "Success", Toast.LENGTH_SHORT).show()
+                parentFragmentManager.navigateTo(
+                    SignInFragment::class.java,
+                    setupFragmentTransaction = { it.setSlideAnimation() }
+                )
             }
         }
     }

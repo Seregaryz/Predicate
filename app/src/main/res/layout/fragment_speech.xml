@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -9,46 +10,51 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingHorizontal="16dp"
         android:background="@color/primaryColor"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:paddingHorizontal="16dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="24dp">
+            android:layout_marginTop="24dp"
+            android:orientation="horizontal">
 
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="@string/tv_app_title"
                 android:layout_weight="1"
+                android:elevation="16dp"
+                android:text="@string/tv_app_title"
+                android:textColor="@color/secondary_text"
                 android:textSize="24sp"
-                android:elevation="16dp" android:textStyle="bold"
-                android:textColor="@color/secondary_text"/>
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/btnMenu"
+                style="@style/Body3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:paddingVertical="4dp"
+                android:paddingStart="4dp"
                 android:text="@string/btn_menu"
+                android:drawablePadding="2dp"
                 android:textColor="@color/secondary_text"
                 android:textSize="18sp"
-                android:paddingVertical="4dp"
-                android:paddingStart="4dp"/>
+                app:drawableEndCompat="@drawable/ic_nav_toolbar_hamburger" />
 
         </LinearLayout>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/tv_tap_to_record"
-            android:textSize="18sp"
+            android:layout_gravity="center_horizontal"
             android:layout_marginTop="48dp"
             android:layout_marginBottom="16dp"
-            android:layout_gravity="center_horizontal"
-            android:textColor="@color/secondary_text"/>
+            android:text="@string/tv_tap_to_record"
+            android:textAlignment="center"
+            android:textColor="@color/secondary_text"
+            android:textSize="18sp" />
 
     </LinearLayout>
 
@@ -56,29 +62,35 @@
         android:id="@+id/btnRecord"
         android:layout_width="80dp"
         android:layout_height="80dp"
-        android:layout_marginTop="24dp"
         android:layout_gravity="center"
+        android:layout_marginTop="24dp"
         android:src="@drawable/ic_microphone" />
 
 
-    <TextView
-        android:id="@+id/result"
+    <EditText
+        android:id="@+id/etResult"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
+        android:layout_marginHorizontal="16dp"
         android:layout_marginTop="24dp"
-        android:textSize="14sp"
-        android:layout_marginHorizontal="16dp"/>
+        android:layout_weight="1"
+        android:background="@drawable/bg_sign_up_edit_text"
+        android:gravity="top"
+        android:inputType="textMultiLine"
+        android:padding="12dp"
+        android:textColor="@color/primary_text"
+        android:textSize="16sp" />
 
     <Button
         android:id="@+id/btnSend"
+        style="@style/Button.Primary"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        style="@style/Button.Primary"
-        android:text="@string/tv_send_arguments"
-        android:layout_marginHorizontal="16dp"
         android:layout_gravity="bottom"
+        android:layout_marginHorizontal="16dp"
         android:layout_marginVertical="40dp"
-        android:textAllCaps="false"/>
+        android:background="@drawable/bg_button_corners_12dp"
+        android:text="@string/tv_send_arguments"
+        android:textAllCaps="false" />
 
 </LinearLayout>

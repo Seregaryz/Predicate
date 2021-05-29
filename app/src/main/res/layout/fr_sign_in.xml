@@ -60,7 +60,8 @@
                         android:layout_marginTop="2dp"
                         android:background="@drawable/bg_sign_up_edit_text"
                         android:inputType="text"
-                        android:paddingVertical="4dp" />
+                        android:paddingVertical="8dp"
+                        android:paddingHorizontal="8dp" />
 
                     <TextView
                         style="@style/Caption4"
@@ -78,7 +79,8 @@
                         android:background="@drawable/bg_sign_up_edit_text"
                         android:inputType="textPassword"
                         android:layout_marginBottom="24dp"
-                        android:paddingVertical="4dp" />
+                        android:paddingVertical="8dp"
+                        android:paddingHorizontal="8dp" />
 
                 </LinearLayout>
 

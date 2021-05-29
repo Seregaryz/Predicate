@@ -48,7 +48,7 @@ class NetworkModule {
         sessionKeeper: SessionKeeper
     ): OkHttpClient =
         with(okHttpClientBuilder) {
-            addNetworkInterceptor(AuthHeaderInterceptor(sessionKeeper))
+            addInterceptor(AuthHeaderInterceptor(sessionKeeper))
             val httpLogger = HttpLoggingInterceptor().apply {
                 level = HttpLoggingInterceptor.Level.BODY
             }

@@ -2,9 +2,9 @@
     <string name="app_name">Predicate</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="tv_app_title">Predicate</string>
-    <string name="tv_tap_to_record">Tap to record your arguments!</string>
-    <string name="tv_send_arguments">Send</string>
-    <string name="btn_menu">Menu</string>
+    <string name="tv_tap_to_record">Нажми на кнопку чтобы записать свои аргументы или введи их вручную!</string>
+    <string name="tv_send_arguments">Отправить</string>
+    <string name="btn_menu">Меню</string>
 
     <string name="tv_sign_up">Регистрация</string>
     <string name="tv_sign_up_description">Зарегистрируйся в приложении или войди в свой аккаунт, чтобы пользоваться приложением</string>
@@ -20,4 +20,8 @@
     <string name="tv_last_name">Фамилия</string>
     <string name="tv_sign_in">Авторизация</string>
     <string name="tv_sign_in_description">Войди в свой аккаунт или создай новый, чтобы пользоваться приложением</string>
+    <string name="tv_mistakes">Обнаруженные ошибки</string>
+    <string name="tv_not_found">Ошибки не найдены</string>
+    <string name="tv_type_of_mistake">Тип ошибки</string>
+    <string name="btn_decline">Отклонить</string>
 </resources>

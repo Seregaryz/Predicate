@@ -67,7 +67,8 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="2dp"
                         android:background="@drawable/bg_sign_up_edit_text"
-                        android:paddingVertical="4dp"
+                        android:paddingVertical="8dp"
+                        android:paddingHorizontal="8dp"
                         android:inputType="textEmailAddress" />
 
                     <TextView
@@ -84,7 +85,8 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="2dp"
                         android:background="@drawable/bg_sign_up_edit_text"
-                        android:paddingVertical="4dp"
+                        android:paddingVertical="8dp"
+                        android:paddingHorizontal="8dp"
                         android:inputType="text"
                         />
 
@@ -102,7 +104,8 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="2dp"
                         android:background="@drawable/bg_sign_up_edit_text"
-                        android:paddingVertical="4dp"
+                        android:paddingVertical="8dp"
+                        android:paddingHorizontal="8dp"
                         android:inputType="text"
                         />
 
@@ -120,7 +123,8 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="2dp"
                         android:background="@drawable/bg_sign_up_edit_text"
-                        android:paddingVertical="4dp"
+                        android:paddingVertical="8dp"
+                        android:paddingHorizontal="8dp"
                         android:inputType="text"
                         />
 
@@ -138,7 +142,8 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="2dp"
                         android:background="@drawable/bg_sign_up_edit_text"
-                        android:paddingVertical="4dp"
+                        android:paddingVertical="8dp"
+                        android:paddingHorizontal="8dp"
                         android:inputType="textPassword"/>
 
                     <TextView
@@ -156,7 +161,8 @@
                         android:layout_marginTop="2dp"
                         android:layout_marginBottom="24dp"
                         android:background="@drawable/bg_sign_up_edit_text"
-                        android:paddingVertical="4dp"
+                        android:paddingVertical="8dp"
+                        android:paddingHorizontal="8dp"
                         android:inputType="textPassword"/>
 
                 </LinearLayout>

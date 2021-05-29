@@ -42,7 +42,6 @@ class SignUpViewModel @ViewModelInject constructor(
             .subscribe (
                 {
                     successSignUpRelay.accept(it)
-                    userInteractor.setAccount(it)
                 }, { e ->
                     errorHandler.proceed(e) {
                         errorMessageRelay.acceptSingleEvent(it)
