@@ -1,9 +1,8 @@
-package com.example.predicate.fragment.statistic
+package com.example.predicate.ui.statistic
 
 import androidx.hilt.lifecycle.ViewModelInject
-import com.example.predicate.fragment.base.BaseViewModel
+import com.example.predicate.ui.base.BaseViewModel
 import com.example.predicate.interactor.SpeechInteractor
-import com.example.predicate.model.mistake.MistakeResponce
 import com.example.predicate.model.mistake.MistakesItem
 import com.example.predicate.model.schedulers.SchedulersProvider
 import com.example.predicate.system.ErrorHandler
@@ -21,27 +20,29 @@ class StatisticViewModel @ViewModelInject constructor(
     private val speechInteractor: SpeechInteractor
 ): BaseViewModel() {
 
-    var currentList = mutableListOf<MistakesItem>()
+    var currentList = mutableListOf<MistakesItem?>()
 
     private var disposable: Disposable? = null
 
     private val errorMessageRelay = BehaviorRelay.create<SingleEvent<String>>()
     private val loadingRelay = BehaviorRelay.create<Boolean>()
-    private val mistakesRelay = BehaviorRelay.create<List<MistakesItem>>()
+    private val mistakesRelay = BehaviorRelay.create<List<MistakesItem?>>()
 
     val errorMessage: Observable<SingleEvent<String>> = errorMessageRelay.hide()
     val loading: Observable<Boolean> = loadingRelay.hide()
-    val mistakes: Observable<List<MistakesItem>> = mistakesRelay.hide()
+    val mistakes: Observable<List<MistakesItem?>> = mistakesRelay.hide()
 
     fun deleteMistake(item: MistakesItem?, position: Int) {
         disposable = speechInteractor.deleteMistake(item?.id)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { loadingRelay.accept(true) }
-            .doFinally { loadingRelay.accept(false) }
-            .doOnComplete {
+            .doFinally {
+                loadingRelay.accept(false)
                 currentList.removeAt(position)
                 mistakesRelay.accept(currentList)
+            }
+            .doOnComplete {
             }
             .subscribe (
                 {

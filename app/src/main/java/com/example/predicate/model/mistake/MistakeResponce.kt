@@ -11,7 +11,7 @@ data class MistakeResponce(
 	val sentence: String? = null,
 
 	@SerializedName("mistakes")
-	val mistakes: List<MistakesItem?>? = null,
+	val mistakes: List<MistakesItem?> = mutableListOf(),
 
 	@SerializedName("id")
 	val id: Int? = null

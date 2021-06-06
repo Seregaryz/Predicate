@@ -1,7 +1,7 @@
-package com.example.predicate.fragment.sign_up
+package com.example.predicate.ui.sign_up
 
 import androidx.hilt.lifecycle.ViewModelInject
-import com.example.predicate.fragment.base.BaseViewModel
+import com.example.predicate.ui.base.BaseViewModel
 import com.example.predicate.interactor.UserInteractor
 import com.example.predicate.model.schedulers.SchedulersProvider
 import com.example.predicate.model.user.UserAccount
@@ -49,4 +49,8 @@ class SignUpViewModel @ViewModelInject constructor(
                 }
             )
     }
+
+    fun validateData(): Boolean =
+        currentUserData.email != "" && currentUserData.firstName != "" && currentUserData.lastName != ""
+                && currentUserData.nickname != "" && currentUserData.password != "" && currentUserData.confirmPassword != ""
 }

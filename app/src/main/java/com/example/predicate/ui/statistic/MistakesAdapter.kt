@@ -1,4 +1,4 @@
-package com.example.predicate.fragment.statistic
+package com.example.predicate.ui.statistic
 
 import android.view.View
 import android.view.ViewGroup
@@ -35,7 +35,7 @@ class MistakesAdapter(
         LayoutContainer, RecyclerView.ViewHolder(containerView) {
 
         fun bind(mistake: MistakesItem?, position: Int) {
-            tvMistake.text = mistake?.type?.get(0)
+            tvMistake.text = mistake?.type
             btnDecline.setOnClickListener {
                 deleteListener(mistake, position)
             }

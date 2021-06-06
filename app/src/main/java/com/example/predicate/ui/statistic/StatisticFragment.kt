@@ -1,16 +1,17 @@
-package com.example.predicate.fragment.statistic
+package com.example.predicate.ui.statistic
 
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.predicate.R
-import com.example.predicate.fragment.base.BaseFragment
-import com.example.predicate.fragment.speech.SpeechFragment
+import com.example.predicate.ui.base.BaseFragment
+import com.example.predicate.ui.speech.SpeechFragment
 import com.example.predicate.model.mistake.MistakeResponce
 import com.example.predicate.system.subscribeToEvent
 import com.example.predicate.utils.navigateTo
 import com.example.predicate.utils.registerOnBackPressedCallback
+import com.example.predicate.utils.replace
 import com.example.predicate.utils.setSlideAnimation
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fr_statistic.*
@@ -33,6 +34,7 @@ class StatisticFragment : BaseFragment(R.layout.fr_statistic) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         if (mistakeResponse != null && mistakeResponse?.mistakes?.isNotEmpty() == true) {
+            viewModel.currentList = mistakeResponse?.mistakes!!.toMutableList()
             rvMistakes.apply {
                 visibility = View.VISIBLE
                 setHasFixedSize(true)
@@ -48,13 +50,13 @@ class StatisticFragment : BaseFragment(R.layout.fr_statistic) {
             rvMistakes.visibility = View.GONE
         }
         btnBack.setOnClickListener {
-            parentFragmentManager.navigateTo(
+            parentFragmentManager.replace(
                 SpeechFragment::class.java,
                 setupFragmentTransaction = { it.setSlideAnimation() }
             )
         }
         registerOnBackPressedCallback {
-            parentFragmentManager.navigateTo(
+            parentFragmentManager.replace(
                 SpeechFragment::class.java,
                 setupFragmentTransaction = { it.setSlideAnimation() }
             )

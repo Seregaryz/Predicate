@@ -11,5 +11,5 @@ data class MistakesItem(
 	val id: Int? = null,
 
 	@SerializedName("type")
-	val type: List<String?>? = null
+	val type: String? = null
 ): Parcelable

@@ -1,20 +1,18 @@
-package com.example.predicate.fragment.speech
+package com.example.predicate.ui.speech
 
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.speech.RecognizerIntent
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
+import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.os.bundleOf
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.viewModels
 import com.example.predicate.R
-import com.example.predicate.fragment.base.BaseFragment
-import com.example.predicate.fragment.statistic.StatisticFragment
+import com.example.predicate.ui.base.BaseFragment
+import com.example.predicate.ui.statistic.StatisticFragment
 import com.example.predicate.system.subscribeToEvent
 import com.example.predicate.utils.navigateTo
 import com.example.predicate.utils.registerOnBackPressedCallback
@@ -75,7 +73,7 @@ class SpeechFragment : BaseFragment(R.layout.fragment_speech) {
                 showProgressDialog(it)
             }.disposeOnPause()
             errorMessage.subscribeToEvent {
-
+                Toast.makeText(requireContext(), "Что-то пошло не так. Повторите попытку позже", Toast.LENGTH_SHORT).show()
             }.disposeOnPause()
             mistakes.subscribe { mistake ->
                 parentFragmentManager.navigateTo(

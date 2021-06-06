@@ -29,7 +29,7 @@ interface Api {
         @Body requestBody: ArgumentRequestBody
     ): Single<MistakeResponce>
 
-    @POST("/api/mistake/decline/{id}")
+    @POST("/api/mistakes/{id}/decline")
     fun deleteMistake(
         @Path("id") id: Int?
     ): Completable

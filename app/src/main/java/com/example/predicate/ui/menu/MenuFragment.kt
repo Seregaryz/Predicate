@@ -1,4 +1,4 @@
-package com.example.predicate.fragment.menu
+package com.example.predicate.ui.menu
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

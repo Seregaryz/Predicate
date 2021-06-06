@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragment.statistic.StatisticFragment"
+    tools:context=".ui.statistic.StatisticFragment"
     android:orientation="vertical">
 
     <LinearLayout
@@ -11,13 +11,13 @@
         android:layout_height="wrap_content"
         android:background="@color/primaryColor"
         android:orientation="vertical"
-        android:paddingBottom="24dp"
+        android:paddingBottom="14dp"
         android:paddingHorizontal="8dp">
 
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="14dp"
             android:orientation="horizontal">
 
             <TextView
@@ -48,7 +48,8 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvMistakes"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_height="match_parent"
+            tools:listitem="@layout/item_mistake"/>
 
         <TextView
             android:id="@+id/tvNotFound"

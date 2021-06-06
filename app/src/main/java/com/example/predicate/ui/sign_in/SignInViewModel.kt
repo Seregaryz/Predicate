@@ -1,12 +1,10 @@
-package com.example.predicate.fragment.speech
+package com.example.predicate.ui.sign_in
 
 import androidx.hilt.lifecycle.ViewModelInject
-import androidx.lifecycle.ViewModel
-import com.example.predicate.fragment.base.BaseViewModel
-import com.example.predicate.interactor.SpeechInteractor
+import com.example.predicate.ui.base.BaseViewModel
 import com.example.predicate.interactor.UserInteractor
-import com.example.predicate.model.mistake.MistakeResponce
 import com.example.predicate.model.schedulers.SchedulersProvider
+import com.example.predicate.model.user.UserAccount
 import com.example.predicate.system.ErrorHandler
 import com.example.predicate.system.SingleEvent
 import com.example.predicate.system.acceptSingleEvent
@@ -15,38 +13,36 @@ import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
-import java.util.*
 
-class SpeechViewModel @ViewModelInject constructor(
+class SignInViewModel @ViewModelInject constructor(
     private val errorHandler: ErrorHandler,
     private val schedulers: SchedulersProvider,
-    private val speechInteractor: SpeechInteractor
+    private val userInteractor: UserInteractor
 ) : BaseViewModel() {
-
-    var currentText = ""
-    var programmaticallyMode = false
-    var flag = true
-
 
     private var disposable: Disposable? = null
 
+    var currentLogin = ""
+    var currentPassword = ""
+
     private val errorMessageRelay = BehaviorRelay.create<SingleEvent<String>>()
     private val loadingRelay = BehaviorRelay.create<Boolean>()
-    private val mistakesRelay = BehaviorRelay.create<MistakeResponce>()
+    private val successSignInRelay = BehaviorRelay.create<UserAccount>()
 
     val errorMessage: Observable<SingleEvent<String>> = errorMessageRelay.hide()
     val loading: Observable<Boolean> = loadingRelay.hide()
-    val mistakes: Observable<MistakeResponce> = mistakesRelay.hide()
+    val successSignUp: Observable<UserAccount> = successSignInRelay.hide()
 
-    fun sendArgument() {
-        disposable = speechInteractor.sendArguments(currentText.toLowerCase(Locale.ROOT))
+    fun signIn() {
+        disposable = userInteractor.signIn(currentLogin, currentPassword)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { loadingRelay.accept(true) }
             .doFinally { loadingRelay.accept(false) }
             .subscribe (
                 {
-                    mistakesRelay.accept(it)
+                    successSignInRelay.accept(it)
+                    userInteractor.setAccount(it)
                 }, { e ->
                     errorHandler.proceed(e) {
                         errorMessageRelay.acceptSingleEvent(it)
@@ -54,4 +50,7 @@ class SpeechViewModel @ViewModelInject constructor(
                 }
             )
     }
+
+    fun validateData(): Boolean =
+        currentLogin != "" && currentPassword != ""
 }

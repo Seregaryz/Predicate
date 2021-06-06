@@ -1,4 +1,4 @@
-package com.example.predicate.fragment.base
+package com.example.predicate.ui.base
 
 import android.os.Bundle
 import android.view.LayoutInflater

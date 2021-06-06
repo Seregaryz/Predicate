@@ -2,9 +2,8 @@ package com.example.predicate
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.example.predicate.fragment.sign_in.SignInFragment
-import com.example.predicate.fragment.sign_up.SignUpFragment
-import com.example.predicate.fragment.speech.SpeechFragment
+import com.example.predicate.ui.sign_in.SignInFragment
+import com.example.predicate.ui.speech.SpeechFragment
 import com.example.predicate.system.SessionKeeper
 import com.example.predicate.utils.newRootScreen
 import com.example.predicate.utils.setSlideAnimation
